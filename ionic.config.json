@@ -1,0 +1,7 @@
+{
+  "name": "ko-bridge-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
