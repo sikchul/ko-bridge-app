@@ -19,7 +19,6 @@
 .env.production.local
 /.nx
 /.nx/cache
-/.vscode/*
 !/.vscode/extensions.json
 .idea
 
@@ -29,3 +28,6 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# cursor
+.cursor

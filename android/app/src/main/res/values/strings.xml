@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">KoBridge</string>
+    <string name="title_activity_main">KoBridge</string>
+    <string name="package_name">com.ko.bridge.app</string>
+    <string name="custom_url_scheme">com.ko.bridge.app</string>
+</resources>
