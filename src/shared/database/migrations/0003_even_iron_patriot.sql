@@ -1,0 +1,1 @@
+ALTER TABLE "overseas_offices" ADD COLUMN "note" text DEFAULT '' NOT NULL;

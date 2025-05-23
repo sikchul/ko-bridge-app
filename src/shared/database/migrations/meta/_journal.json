@@ -15,6 +15,20 @@
       "when": 1747924731206,
       "tag": "0001_curious_lightspeed",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748013877464,
+      "tag": "0002_low_talon",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1748013946405,
+      "tag": "0003_even_iron_patriot",
+      "breakpoints": true
     }
   ]
 }

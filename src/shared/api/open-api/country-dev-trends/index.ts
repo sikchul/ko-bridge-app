@@ -1,59 +1,9 @@
 import type { CountryDevTrendDB } from '@shared/api/supabase';
 import { ENV } from '@shared/constants/config';
 
-type CountryDevTrends = {
-  국가?: string;
-  국가명?: string;
-  지역?: string;
-  사무소?: string;
-  구분: string;
-  분야: string;
-  제목: string;
-  본문1: string;
-  본문2: string;
-  본문3: string;
-  본문4?: string;
-  본문5?: string;
-  코로나19관련?: string;
-  출처: string;
-  링크: string;
-  날짜: string;
-};
-
-interface ResponseCountryDevTrends {
-  page: number;
-  perPage: number;
-  totalCount: number;
-  currentCount: number;
-  matchCount: number;
-  data: CountryDevTrends[];
-}
-
-interface RequestCountryDevTrends {
-  page?: string;
-  perPage?: string;
-  returnType?: string;
-}
-
-type KeyMapping<T extends string, U extends string> = {
-  [K in T]: U;
-};
-
-const translateKeys = (
-  data: Record<string, unknown>[],
-  keyMapping: Record<string, string>
-): Record<string, unknown>[] => {
-  return data.map((item) => {
-    const translatedItem: Record<string, unknown> = {};
-    Object.keys(item).forEach((key) => {
-      const englishKey = keyMapping[key];
-      if (englishKey) {
-        translatedItem[englishKey] = item[key];
-      }
-    });
-    return translatedItem;
-  });
-};
+import type { CountryDevTrends } from './types';
+import { delay, fetchWithPagination, translateKeys } from '../common';
+import type { KeyMapping, RequestOpenApi, ResponseOpenApi } from '../common/types';
 
 const keyMapping: KeyMapping<
   keyof CountryDevTrends,
@@ -77,47 +27,16 @@ const keyMapping: KeyMapping<
   날짜: 'published_date'
 } as const;
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const fetchWithPagination = async (
-  path: string,
-  queryParams: string,
-  pageSize: number = 900
-): Promise<ResponseCountryDevTrends[]> => {
-  const firstResponse = await fetch(
-    `${ENV.api.url}${path}?${queryParams}&page=1&perPage=${pageSize}`
-  );
-  const firstData = (await firstResponse.json()) as ResponseCountryDevTrends;
-  const totalCount = firstData.totalCount;
-
-  const totalPages = Math.ceil(totalCount / pageSize);
-  const results: ResponseCountryDevTrends[] = [firstData];
-
-  for (let page = 2; page <= totalPages; page++) {
-    const response = await fetch(
-      `${ENV.api.url}${path}?${queryParams}&page=${page}&perPage=${pageSize}`
-    );
-    const data = (await response.json()) as ResponseCountryDevTrends;
-    results.push(data);
-
-    if (page < totalPages) {
-      await delay(1000);
-    }
-  }
-
-  return results;
-};
-
 export const getCountryDevTrends = async (
-  request: RequestCountryDevTrends
+  request: RequestOpenApi
 ): Promise<CountryDevTrendDB[]> => {
   const { returnType = 'JSON' } = request;
   const queryParams = `returnType=${returnType}&serviceKey=${ENV.api.key}`;
-  let allData: ResponseCountryDevTrends[] = [];
+  let allData: ResponseOpenApi<CountryDevTrends>[] = [];
 
   for (const path of COUNTRY_DEV_TRENDS_PATH_ARRAY) {
     try {
-      const pathResults = await fetchWithPagination(path, queryParams);
+      const pathResults = await fetchWithPagination<CountryDevTrends>(path, queryParams);
       allData = [...allData, ...pathResults];
 
       if (path !== COUNTRY_DEV_TRENDS_PATH_ARRAY[COUNTRY_DEV_TRENDS_PATH_ARRAY.length - 1]) {

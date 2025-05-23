@@ -174,7 +174,10 @@ export type Database = {
       overseas_offices: {
         Row: {
           address: string
+          code: string
+          homepage: string
           id: number | null
+          note: string
           overseas_office_id: number
           overseas_office_name: string
           region: string
@@ -182,7 +185,10 @@ export type Database = {
         }
         Insert: {
           address?: string
+          code?: string
+          homepage?: string
           id?: number | null
+          note?: string
           overseas_office_id?: number
           overseas_office_name?: string
           region?: string
@@ -190,7 +196,10 @@ export type Database = {
         }
         Update: {
           address?: string
+          code?: string
+          homepage?: string
           id?: number | null
+          note?: string
           overseas_office_id?: number
           overseas_office_name?: string
           region?: string
