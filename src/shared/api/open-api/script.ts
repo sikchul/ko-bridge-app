@@ -1,4 +1,3 @@
-import { supabase } from '../supabase';
 import { delay, upsertWithChunks } from './common';
 import { getCountryDevTrends } from './country-dev-trends';
 import { getDevcoopVideos } from './devcoop-videos';

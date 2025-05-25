@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
-  { ignores: ['dist', 'cypress.config.ts', 'android/**/*', 'ios/**/*'] },
+  { ignores: ['dist', 'script', 'cypress.config.ts', 'android/**/*', 'ios/**/*'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
