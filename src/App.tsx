@@ -1,20 +1,13 @@
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
-} from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import { Route } from 'react-router-dom';
-
-import Home from './pages/Home';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import CommunityList from '@pages/CoummunityList';
+import CountryInfo from '@pages/country/CountryInfo';
+import CountryInfoList from '@pages/country/CountryInfoList';
+import CountryList from '@pages/country/CountryList';
+import DevcoopVideoList from '@pages/DevcoopVideoList';
+import HomeBase from '@pages/HomeBase';
+import { ROUTE } from '@shared/constants/route';
+import { Redirect, Route } from 'react-router-dom';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -48,38 +41,20 @@ import './theme/variables.scss';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
+export default function App() {
+  return (
+    <IonApp>
+      <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
+          <Route exact path={ROUTE.ROOT.path} render={() => <Redirect to={ROUTE.HOME.path} />} />
+          <Route exact path={ROUTE.HOME.path} component={HomeBase} />
+          <Route exact path={ROUTE.VIDEOS.path} component={DevcoopVideoList} />
+          <Route exact path={ROUTE.COMMUNITIES.path} component={CommunityList} />
+          <Route exact path={ROUTE.COUNTRIES.path} component={CountryList} />
+          <Route exact path={ROUTE.COUNTRY_INFO_ITEMS.path} component={CountryInfoList} />
+          <Route exact path={ROUTE.COUNTRY_INFO_ITEM_CONTENT.path} component={CountryInfo} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
-
-export default App;
+      </IonReactRouter>
+    </IonApp>
+  );
+}

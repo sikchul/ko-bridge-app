@@ -43,9 +43,10 @@ export default tseslint.config(
       '@typescript-eslint/no-empty-object-type': [
         'error',
         {
-          allowInterfaces: 'with-single-extends'
+          allowInterfaces: 'always'
         }
       ],
+      'no-empty-pattern': ['error', { allowObjectPatternsAsParameters: true }],
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
     }

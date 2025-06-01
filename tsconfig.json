@@ -19,7 +19,9 @@
     "paths": {
       "@shared/*": ["src/shared/*"],
       "@entities/*": ["src/entities/*"],
-      "@widgets/*": ["src/widgets/*"]
+      "@widgets/*": ["src/widgets/*"],
+      "@app/*": ["src/app/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src", "drizzle.config.ts"],

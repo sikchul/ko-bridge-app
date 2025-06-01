@@ -1,14 +1,15 @@
 import { IonContent, IonPage } from '@ionic/react';
 import { HomeHeader } from '@widgets/header/home-header';
+import { type RouteComponentProps } from 'react-router-dom';
 
-export default function Home() {
+interface HomeProps extends RouteComponentProps {}
+
+export default function Home({}: HomeProps) {
   return (
     <IonPage>
       <HomeHeader />
       <IonContent fullscreen>
-        <div>
-          <h1>Home</h1>
-        </div>
+        <div>Home</div>
       </IonContent>
     </IonPage>
   );
