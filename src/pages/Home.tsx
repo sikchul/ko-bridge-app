@@ -1,4 +1,5 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonPage } from '@ionic/react';
+import { SharedIonContent } from '@widgets/content/shared-content';
 import { HomeHeader } from '@widgets/header/home-header';
 import { type RouteComponentProps } from 'react-router-dom';
 
@@ -8,9 +9,9 @@ export default function Home({}: HomeProps) {
   return (
     <IonPage>
       <HomeHeader />
-      <IonContent fullscreen>
+      <SharedIonContent>
         <div>Home</div>
-      </IonContent>
+      </SharedIonContent>
     </IonPage>
   );
 }

@@ -1,9 +1,8 @@
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import CategoryInfo from '@pages/category/CategoryInfo';
+import CategoryList from '@pages/category/CategoryList';
 import CommunityList from '@pages/CoummunityList';
-import CountryInfo from '@pages/country/CountryInfo';
-import CountryInfoList from '@pages/country/CountryInfoList';
-import CountryList from '@pages/country/CountryList';
 import DevcoopVideoList from '@pages/DevcoopVideoList';
 import HomeBase from '@pages/HomeBase';
 import { ROUTE } from '@shared/constants/route';
@@ -50,9 +49,8 @@ export default function App() {
           <Route exact path={ROUTE.HOME.path} component={HomeBase} />
           <Route exact path={ROUTE.VIDEOS.path} component={DevcoopVideoList} />
           <Route exact path={ROUTE.COMMUNITIES.path} component={CommunityList} />
-          <Route exact path={ROUTE.COUNTRIES.path} component={CountryList} />
-          <Route exact path={ROUTE.COUNTRY_INFO_ITEMS.path} component={CountryInfoList} />
-          <Route exact path={ROUTE.COUNTRY_INFO_ITEM_CONTENT.path} component={CountryInfo} />
+          <Route exact path={ROUTE.CATEGORIES.path} component={CategoryList} />
+          <Route exact path={ROUTE.CATEGORY_INFO.path} component={CategoryInfo} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

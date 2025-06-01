@@ -16,10 +16,10 @@ const TAB_BUTTON_LIST = [
     path: ''
   },
   {
-    label: ROUTE.COUNTRIES.footerLabel,
-    value: ROUTE.COUNTRIES.value,
+    label: ROUTE.CATEGORIES.footerLabel,
+    value: ROUTE.CATEGORIES.value,
     icon: globeOutline,
-    path: ROUTE.COUNTRIES.path
+    path: ROUTE.CATEGORIES.path
   },
   {
     label: ROUTE.VIDEOS.footerLabel,

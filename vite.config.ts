@@ -15,7 +15,8 @@ export default defineConfig({
       '@entities': path.resolve(__dirname, 'src/entities'),
       '@widgets': path.resolve(__dirname, 'src/widgets'),
       '@app': path.resolve(__dirname, 'src/app'),
-      '@pages': path.resolve(__dirname, 'src/pages')
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@features': path.resolve(__dirname, 'src/features')
     }
   },
   test: {
