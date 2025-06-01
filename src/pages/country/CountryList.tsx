@@ -1,6 +1,6 @@
 import { IonButton, IonContent, IonPage } from '@ionic/react';
 import { ROUTE } from '@shared/constants/route';
-import SharedHeader from '@widgets/header/shared-header/ui/SharedHeader';
+import { SharedHeader } from '@widgets/header/shared-header';
 import { type RouteComponentProps } from 'react-router-dom';
 
 interface CountryListProps extends RouteComponentProps {}
