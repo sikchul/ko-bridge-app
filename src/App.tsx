@@ -6,6 +6,8 @@ import CommunityList from '@pages/CoummunityList';
 import DevcoopVideoList from '@pages/DevcoopVideoList';
 import HomeBase from '@pages/HomeBase';
 import { ROUTE } from '@shared/constants/route';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Redirect, Route } from 'react-router-dom';
 
 /* Core CSS required for Ionic components to work properly */
@@ -40,19 +42,35 @@ import './theme/variables.scss';
 
 setupIonicReact();
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      staleTime: 0,
+      gcTime: 0,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false
+    }
+  }
+});
+
 export default function App() {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path={ROUTE.ROOT.path} render={() => <Redirect to={ROUTE.HOME.path} />} />
-          <Route exact path={ROUTE.HOME.path} component={HomeBase} />
-          <Route exact path={ROUTE.VIDEOS.path} component={DevcoopVideoList} />
-          <Route exact path={ROUTE.COMMUNITIES.path} component={CommunityList} />
-          <Route exact path={ROUTE.CATEGORIES.path} component={CategoryList} />
-          <Route exact path={ROUTE.CATEGORY_INFO.path} component={CategoryInfo} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
+    <QueryClientProvider client={queryClient}>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route exact path={ROUTE.ROOT.path} render={() => <Redirect to={ROUTE.HOME.path} />} />
+            <Route exact path={ROUTE.HOME.path} component={HomeBase} />
+            <Route exact path={ROUTE.VIDEOS.path} component={DevcoopVideoList} />
+            <Route exact path={ROUTE.COMMUNITIES.path} component={CommunityList} />
+            <Route exact path={ROUTE.CATEGORIES.path} component={CategoryList} />
+            <Route exact path={ROUTE.CATEGORY_INFO.path} component={CategoryInfo} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }

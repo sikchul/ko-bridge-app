@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default tseslint.config(
   { ignores: ['dist', 'script', 'cypress.config.ts', 'android/**/*', 'ios/**/*'] },
@@ -17,7 +18,8 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      import: importPlugin
+      import: importPlugin,
+      '@tanstack/query': pluginQuery
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
