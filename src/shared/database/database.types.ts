@@ -239,7 +239,12 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      get_dev_trend_country_list_view: {
+        Row: {
+          country: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
