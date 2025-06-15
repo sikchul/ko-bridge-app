@@ -1,0 +1,16 @@
+.card-list {
+  margin-bottom: 24px;
+}
+
+.card-list-skeleton {
+  --border-radius: 8px;
+  height: 330px;
+}
+
+.card-list-item {
+  margin: 10px;
+  --min-height: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+}
