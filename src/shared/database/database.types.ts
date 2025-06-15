@@ -245,6 +245,26 @@ export type Database = {
         }
         Relationships: []
       }
+      get_dev_trend_filter_options_view: {
+        Row: {
+          country_list: string[] | null
+          published_date_list: string[] | null
+          sector_list: string[] | null
+        }
+        Relationships: []
+      }
+      get_dev_trend_published_date_list_view: {
+        Row: {
+          published_date: number | null
+        }
+        Relationships: []
+      }
+      get_dev_trend_sector_list_view: {
+        Row: {
+          sector: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never

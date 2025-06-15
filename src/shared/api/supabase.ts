@@ -9,6 +9,10 @@ export type GlobalTrainingDB = Tables<'global_training'>;
 export type OverseasOfficesDB = Tables<'overseas_offices'>;
 export type VolunteerGuidesDB = Tables<'volunteer_guides'>;
 export type DevcoopVideosDB = Tables<'devcoop_videos'>;
+export type DevTrendCountryListDB = Tables<'get_dev_trend_country_list_view'>;
+export type DevTrendPublishedDateListDB = Tables<'get_dev_trend_published_date_list_view'>;
+export type DevTrendSectorListDB = Tables<'get_dev_trend_sector_list_view'>;
+export type DevTrendFilterOptionsDB = Tables<'get_dev_trend_filter_options_view'>;
 
 export type Database = MergeDeep<
   SupabaseDatabase,
@@ -18,6 +22,21 @@ export type Database = MergeDeep<
         get_dev_trend_country_list_view: {
           Row: SetNonNullable<
             SupabaseDatabase['public']['Views']['get_dev_trend_country_list_view']['Row']
+          >;
+        };
+        get_dev_trend_published_date_list_view: {
+          Row: SetNonNullable<
+            SupabaseDatabase['public']['Views']['get_dev_trend_published_date_list_view']['Row']
+          >;
+        };
+        get_dev_trend_sector_list_view: {
+          Row: SetNonNullable<
+            SupabaseDatabase['public']['Views']['get_dev_trend_sector_list_view']['Row']
+          >;
+        };
+        get_dev_trend_filter_options_view: {
+          Row: SetNonNullable<
+            SupabaseDatabase['public']['Views']['get_dev_trend_filter_options_view']['Row']
           >;
         };
       };
