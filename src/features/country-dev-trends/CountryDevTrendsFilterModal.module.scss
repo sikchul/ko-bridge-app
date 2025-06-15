@@ -1,0 +1,15 @@
+.custom-select {
+  --padding-start: 0;
+  --padding-end: 0;
+  margin-top: 8px;
+
+  &::part(label) {
+    color: var(--ion-color-medium);
+    font-size: 14px;
+  }
+
+  &::part(text) {
+    font-size: 16px;
+    color: var(--ion-color-dark);
+  }
+}

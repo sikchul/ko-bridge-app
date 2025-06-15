@@ -1,0 +1,14 @@
+.card-content-inner-wrapper {
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+
+  .wrapper-inner-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(transparent, white);
+  }
+}
